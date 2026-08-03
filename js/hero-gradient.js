@@ -76,7 +76,7 @@
       float glow = smoothstep(0.8, 0.0, dist) * 0.3;
       col += u_colors[1] * glow;
 
-      col = mix(col * 0.2, col, vignette);
+      col = mix(col * 0.72, col, vignette);
 
       float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453 + u_time);
       col += (grain - 0.5) * u_grain * 0.1;
@@ -85,14 +85,14 @@
     }
   `;
 
-  // Bahari Seafood brand palette: deep ocean navy base with teal currents.
-  // Gold sits last (colors[3]) because the shader mixes it in via a noise
+  // Bright, sunlit-ocean palette: light aqua base, cyan/seafoam currents,
+  // gold sits last (colors[3]) because the shader mixes it in via a noise
   // *product* (n1 * n2), which only lights up where both fields agree — so
   // it reads as rare sunlight-on-water glints rather than a dominant blob.
-  const BG = '#052831';
-  const COLORS = ['#0B6E7A', '#17BEBB', '#5EEAD4', '#FFB703'];
+  const BG = '#38BDC9';
+  const COLORS = ['#7DE8DC', '#5EEAD4', '#FFFFFF', '#FFD166'];
   const SPEED = 0.85;
-  const GRAIN = 0.28;
+  const GRAIN = 0.2;
 
   function hexToRgb(hex) {
     const h = hex.replace('#', '');
