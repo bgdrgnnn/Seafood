@@ -216,6 +216,49 @@
     </div>
   </section>
 
+  <!-- ===== SOROTAN PRODUK (Interactive Showcase) ===== -->
+  <section class="section showcase-section" id="sorotan">
+    <div class="showcase-bg" id="showcaseBg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sorotan Produk</p>
+        <h2>Jelajahi Setiap Produk Secara Detail</h2>
+        <p class="section-sub">Cek tingkat kesegaran, grade ekspor, dan karakteristik tiap kategori hasil laut kami secara interaktif.</p>
+      </div>
+
+      <div class="showcase-stage">
+        <div class="showcase-visual" id="showcaseVisual">
+          <div class="showcase-ring" aria-hidden="true"></div>
+          <div class="showcase-glow" id="showcaseGlow" aria-hidden="true"></div>
+          <div class="showcase-frame">
+            <div class="showcase-float" id="showcaseFloat"></div>
+          </div>
+          <div class="showcase-status">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Siap Ekspor</span>
+          </div>
+        </div>
+
+        <div class="showcase-details visible" id="showcaseDetails">
+          <p class="sd-label sd-anim" id="sdLabel">Cumi-Cumi</p>
+          <h3 class="sd-title sd-anim" id="sdTitle">Judul Produk</h3>
+          <p class="sd-desc sd-anim" id="sdDesc">Deskripsi produk.</p>
+          <div class="sd-features sd-anim" id="sdFeatures"></div>
+          <div class="sd-grade sd-anim">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span id="sdGradeText">Grade A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-switcher-wrap">
+        <div class="showcase-switcher" id="showcaseSwitcher">
+          <div class="showcase-indicator" id="showcaseIndicator"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROSES EKSPOR ===== -->
   <section class="section section-alt" id="ekspor">
     <div class="container">
@@ -387,6 +430,7 @@
 
 <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
 
+<script src="js/showcase.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
