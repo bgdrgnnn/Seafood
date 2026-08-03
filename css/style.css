@@ -151,7 +151,7 @@ p { margin: 0 0 1em; }
 .hero-inner {
   display: flex;
   justify-content: center;
-  padding: 48px 24px 150px;
+  padding: 76px 24px 150px;
   position: relative;
 }
 .hero-copy { color: var(--deep); max-width: 720px; text-align: center; }
