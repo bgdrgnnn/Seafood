@@ -17,7 +17,7 @@
         { label: 'Tingkat Kesegaran', value: 96 },
         { label: 'Grade Ekspor', value: 92 },
       ],
-      icon: `<svg viewBox="0 0 100 100"><path d="M50 15c-12 0-20 10-20 24 0 16 12 30 16 40 2 5 6 5 8 0 4-10 16-24 16-40 0-14-8-24-20-24z" fill="url(#sg-cumi)"/><circle cx="43" cy="42" r="3.5" fill="#073B4C"/><circle cx="57" cy="42" r="3.5" fill="#073B4C"/><path d="M50 78v14M42 84l16 12M58 84l-16 12M35 80l30 20" stroke="#0B6E7A" stroke-width="2.5" stroke-linecap="round"/><defs><linearGradient id="sg-cumi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17BEBB"/><stop offset="1" stop-color="#0891B2"/></linearGradient></defs></svg>`,
+      image: 'images/cumi.webp',
     },
     {
       id: 'gurita',
@@ -31,7 +31,7 @@
         { label: 'Tingkat Kesegaran', value: 94 },
         { label: 'Konsistensi Ukuran', value: 90 },
       ],
-      icon: `<svg viewBox="0 0 100 100"><path d="M50 12c-16 0-26 13-26 27 0 20 15 32 20 41 2 4 10 4 12 0 5-9 20-21 20-41 0-14-10-27-26-27z" fill="url(#sg-gurita)"/><circle cx="42" cy="38" r="4" fill="#fff"/><circle cx="58" cy="38" r="4" fill="#fff"/><path d="M30 70q-6 10 2 16M40 76q-4 12 4 16M50 78q0 12 0 18M60 76q4 12-4 16M70 70q6 10-2 16" stroke="#0B6E7A" stroke-width="3" fill="none" stroke-linecap="round"/><defs><linearGradient id="sg-gurita" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B6E7A"/><stop offset="1" stop-color="#073B4C"/></linearGradient></defs></svg>`,
+      image: 'images/gurita.webp',
     },
     {
       id: 'udang',
@@ -45,7 +45,35 @@
         { label: 'Grade Ekspor', value: 97 },
         { label: 'Konsistensi Ukuran', value: 95 },
       ],
-      icon: `<svg viewBox="0 0 100 100"><path d="M25 60c15-30 45-38 55-20 6 10-2 22-14 24-10 2-20-4-24-14" fill="none" stroke="url(#sg-udang)" stroke-width="7" stroke-linecap="round"/><circle cx="27" cy="57" r="4" fill="#073B4C"/><path d="M60 40c6-4 12-14 10-22" stroke="#FFB703" stroke-width="4" fill="none" stroke-linecap="round"/><defs><linearGradient id="sg-udang" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17BEBB"/><stop offset="1" stop-color="#0891B2"/></linearGradient></defs></svg>`,
+      image: 'images/udang.webp',
+    },
+    {
+      id: 'kepiting',
+      label: 'Kepiting',
+      title: 'Daging Manis, Cangkang Utuh',
+      description: 'Kepiting rajungan & bakau segar dengan daging manis dan cangkang utuh terjaga, tersedia hidup maupun beku sesuai permintaan pasar ekspor.',
+      status: 'Siap Ekspor',
+      grade: 'Grade Premium',
+      colors: { c1: '#FF6B6B', c2: '#C0392B' },
+      features: [
+        { label: 'Tingkat Kesegaran', value: 91 },
+        { label: 'Grade Ekspor', value: 94 },
+      ],
+      image: 'images/kepiting.webp',
+    },
+    {
+      id: 'lobster',
+      label: 'Lobster',
+      title: 'Premium, Daging Padat',
+      description: 'Lobster mutiara & pasir pilihan dengan daging padat dan cita rasa premium, tersedia hidup maupun beku untuk pasar restoran dan ekspor kelas atas.',
+      status: 'Siap Ekspor',
+      grade: 'Super Premium',
+      colors: { c1: '#EF4444', c2: '#991B1B' },
+      features: [
+        { label: 'Tingkat Kesegaran', value: 90 },
+        { label: 'Grade Ekspor', value: 97 },
+      ],
+      image: 'images/lobster.webp',
     },
     {
       id: 'tuna',
@@ -59,7 +87,7 @@
         { label: 'Tingkat Kesegaran', value: 95 },
         { label: 'Grade Ekspor', value: 98 },
       ],
-      icon: `<svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="url(#sg-tuna)"/><path d="M79 50l16-14v28z" fill="url(#sg-tuna)"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/><path d="M20 50c-10 4-16 4-16 4" stroke="#FB8500" stroke-width="3" stroke-linecap="round"/><defs><linearGradient id="sg-tuna" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB703"/><stop offset="1" stop-color="#FB8500"/></linearGradient></defs></svg>`,
+      image: 'images/tuna.webp',
     },
     {
       id: 'salmon',
@@ -73,7 +101,7 @@
         { label: 'Tingkat Kesegaran', value: 93 },
         { label: 'Kualitas Rantai Dingin', value: 96 },
       ],
-      icon: `<svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="url(#sg-salmon)"/><path d="M79 50l16-14v28z" fill="url(#sg-salmon)"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/><path d="M25 40q10-8 20-4M25 60q10 8 20 4" stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/><defs><linearGradient id="sg-salmon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FB8500"/><stop offset="1" stop-color="#E85D75"/></linearGradient></defs></svg>`,
+      image: 'images/salmon.webp',
     },
     {
       id: 'lainnya',
@@ -138,7 +166,9 @@
     bg.style.setProperty('--active-glow', hexToRgba(product.colors.c1, 0.28));
     glow.style.background = `linear-gradient(135deg, ${product.colors.c1}, ${product.colors.c2})`;
 
-    float.innerHTML = product.icon;
+    float.innerHTML = product.image
+      ? `<img src="${product.image}" alt="${product.label}" loading="lazy">`
+      : product.icon;
     statusDot.style.background = product.colors.c1;
     statusText.textContent = product.status;
     sdLabel.textContent = product.label;
