@@ -158,57 +158,84 @@
 
       <div class="product-grid">
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#0891B2;--c2:#17BEBB">
-            <svg viewBox="0 0 100 100"><path d="M50 15c-12 0-20 10-20 24 0 16 12 30 16 40 2 5 6 5 8 0 4-10 16-24 16-40 0-14-8-24-20-24z" fill="url(#g1)"/><circle cx="43" cy="42" r="3.5" fill="#073B4C"/><circle cx="57" cy="42" r="3.5" fill="#073B4C"/><path d="M50 78v14M42 84l16 12M58 84l-16 12M35 80l30 20" stroke="#0B6E7A" stroke-width="2.5" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <!-- Nanti kalau ada foto produk: tambahkan url('images/cumi.jpg') sebagai
+             background-image di .product-card (css/style.css) dan turunkan opacity
+             gradasinya biar foto kelihatan di belakang teks. -->
+        <article class="product-card reveal" style="--c1:#0891B2;--c2:#17BEBB">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M50 15c-12 0-20 10-20 24 0 16 12 30 16 40 2 5 6 5 8 0 4-10 16-24 16-40 0-14-8-24-20-24z" fill="#fff"/><circle cx="43" cy="42" r="3.5" fill="#0891B2"/><circle cx="57" cy="42" r="3.5" fill="#0891B2"/><path d="M50 78v14M42 84l16 12M58 84l-16 12M35 80l30 20" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
           </div>
-          <h3>Cumi-Cumi <span>(Squid)</span></h3>
-          <p>Cumi segar dan beku, tersedia whole cleaned maupun tube &amp; tentacle, tekstur kenyal dan rasa manis alami.</p>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Cephalopoda &middot; Squid</span>
+          </div>
+          <h3>Cumi-Cumi</h3>
+          <p>Segar &amp; beku, whole cleaned maupun tube &amp; tentacle, tekstur kenyal dengan rasa manis alami.</p>
           <div class="tags"><span>Fresh</span><span>Frozen</span><span>Whole / Tube</span></div>
         </article>
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#0B6E7A;--c2:#073B4C">
-            <svg viewBox="0 0 100 100"><path d="M50 12c-16 0-26 13-26 27 0 20 15 32 20 41 2 4 10 4 12 0 5-9 20-21 20-41 0-14-10-27-26-27z" fill="url(#g2)"/><circle cx="42" cy="38" r="4" fill="#fff"/><circle cx="58" cy="38" r="4" fill="#fff"/><path d="M30 70q-6 10 2 16M40 76q-4 12 4 16M50 78q0 12 0 18M60 76q4 12-4 16M70 70q6 10-2 16" stroke="#0B6E7A" stroke-width="3" fill="none" stroke-linecap="round"/><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <article class="product-card reveal" style="--c1:#0B6E7A;--c2:#073B4C">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M50 12c-16 0-26 13-26 27 0 20 15 32 20 41 2 4 10 4 12 0 5-9 20-21 20-41 0-14-10-27-26-27z" fill="#fff"/><circle cx="42" cy="38" r="4" fill="#073B4C"/><circle cx="58" cy="38" r="4" fill="#073B4C"/><path d="M30 70q-6 10 2 16M40 76q-4 12 4 16M50 78q0 12 0 18M60 76q4 12-4 16M70 70q6 10-2 16" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
           </div>
-          <h3>Gurita <span>(Octopus)</span></h3>
-          <p>Gurita ukuran pilihan dengan penanganan cepat dan pembekuan optimal untuk menjaga tekstur dan rasa.</p>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Cephalopoda &middot; Octopus</span>
+          </div>
+          <h3>Gurita</h3>
+          <p>Ukuran pilihan, tekstur padat dengan penanganan higienis dan pembekuan optimal.</p>
           <div class="tags"><span>Frozen</span><span>Whole Cleaned</span><span>Grade A</span></div>
         </article>
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#17BEBB;--c2:#0891B2">
-            <svg viewBox="0 0 100 100"><path d="M25 60c15-30 45-38 55-20 6 10-2 22-14 24-10 2-20-4-24-14" fill="none" stroke="url(#g3)" stroke-width="7" stroke-linecap="round"/><circle cx="27" cy="57" r="4" fill="#073B4C"/><path d="M60 40c6-4 12-14 10-22" stroke="#FFB703" stroke-width="4" fill="none" stroke-linecap="round"/><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <article class="product-card reveal" style="--c1:#17BEBB;--c2:#0891B2">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M25 60c15-30 45-38 55-20 6 10-2 22-14 24-10 2-20-4-24-14" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="27" cy="57" r="4" fill="#0891B2"/><path d="M60 40c6-4 12-14 10-22" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
           </div>
-          <h3>Udang <span>(Shrimp / Prawn)</span></h3>
-          <p>Udang windu &amp; vannamei tersedia head-on maupun headless, berbagai size sesuai permintaan pasar.</p>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Crustacea &middot; Shrimp</span>
+          </div>
+          <h3>Udang</h3>
+          <p>Windu &amp; vannamei, head-on maupun headless, berbagai size sesuai standar buyer internasional.</p>
           <div class="tags"><span>HOSO</span><span>HLSO</span><span>PD / PUD</span></div>
         </article>
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#FFB703;--c2:#FB8500">
-            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="url(#g4)"/><path d="M79 50l16-14v28z" fill="url(#g4)"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/><path d="M20 50c-10 4-16 4-16 4" stroke="#FB8500" stroke-width="3" stroke-linecap="round"/><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <article class="product-card reveal" style="--c1:#FFB703;--c2:#FB8500">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="#fff"/><path d="M79 50l16-14v28z" fill="#fff"/><circle cx="20" cy="45" r="3.5" fill="#FB8500"/><path d="M20 50c-10 4-16 4-16 4" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Ikan Pelagis &middot; Tuna</span>
           </div>
           <h3>Tuna</h3>
-          <p>Tuna loin dan whole round dengan daging padat, cocok untuk kebutuhan sashimi grade maupun olahan.</p>
+          <p>Daging padat berwarna merah cerah, kualitas sashimi grade, tersedia whole maupun loin.</p>
           <div class="tags"><span>Whole</span><span>Loin</span><span>Sashimi Grade</span></div>
         </article>
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#FB8500;--c2:#E85D75">
-            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="url(#g5)"/><path d="M79 50l16-14v28z" fill="url(#g5)"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/><path d="M25 40q10-8 20-4M25 60q10 8 20 4" stroke="#fff" stroke-width="2" fill="none" opacity="0.6"/><defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <article class="product-card reveal" style="--c1:#FB8500;--c2:#E85D75">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="#fff"/><path d="M79 50l16-14v28z" fill="#fff"/><circle cx="20" cy="45" r="3.5" fill="#E85D75"/><path d="M25 40q10-8 20-4M25 60q10 8 20 4" stroke="#E85D75" stroke-width="2" fill="none" opacity="0.6"/></svg>
+          </div>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Ikan Premium &middot; Salmon</span>
           </div>
           <h3>Salmon</h3>
-          <p>Salmon segar dan beku dalam bentuk whole, fillet, maupun portion, warna cerah dan tekstur premium.</p>
+          <p>Warna cerah, lemak (marbling) merata, tersedia whole, fillet, maupun portion.</p>
           <div class="tags"><span>Fresh</span><span>Fillet</span><span>Portion</span></div>
         </article>
 
-        <article class="product-card reveal">
-          <div class="product-icon" style="--c1:#0B6E7A;--c2:#17BEBB">
-            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="url(#g6)"/><path d="M79 50l16-14v28z" fill="url(#g6)"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/><defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs></svg>
+        <article class="product-card reveal" style="--c1:#0B6E7A;--c2:#17BEBB">
+          <div class="card-decor" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><ellipse cx="45" cy="50" rx="34" ry="18" fill="#fff"/><path d="M79 50l16-14v28z" fill="#fff"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/></svg>
+          </div>
+          <div class="card-badge">
+            <span class="card-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="card-badge-label">Aneka Ikan &middot; Mixed</span>
           </div>
           <h3>Ikan Laut Lainnya</h3>
-          <p>Kakap, kerapu, bawal, kembung, tenggiri, dan aneka ikan konsumsi lainnya tersedia sesuai musim &amp; permintaan.</p>
+          <p>Kakap, kerapu, bawal, kembung &amp; tenggiri tersedia sesuai musim dan permintaan.</p>
           <div class="tags"><span>Fresh</span><span>Frozen</span><span>Whole / Fillet</span></div>
         </article>
 

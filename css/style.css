@@ -222,31 +222,64 @@ p { margin: 0 0 1em; }
   gap: 28px;
 }
 .product-card {
-  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
   border-radius: var(--radius);
-  padding: 30px 26px;
+  padding: 28px 26px;
+  color: var(--white);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--c1) 30%, #04141a) 0%, color-mix(in srgb, var(--c2) 20%, #030d11) 100%);
   box-shadow: var(--shadow);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.product-icon {
-  width: 78px; height: 78px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--c1) 16%, white), color-mix(in srgb, var(--c2) 10%, white));
-  padding: 14px;
-  margin-bottom: 18px;
+
+.card-decor {
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 150px;
+  height: 150px;
+  opacity: .16;
+  pointer-events: none;
+  z-index: -1;
 }
-.product-card h3 { font-size: 1.15rem; margin-bottom: .3em; }
-.product-card h3 span { display: block; font-size: .75rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
-.product-card p { color: var(--text-muted); font-size: .92rem; }
-.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.card-decor svg { width: 100%; height: 100%; }
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.card-badge-icon {
+  width: 34px; height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--white);
+}
+.card-badge-icon svg { width: 16px; height: 16px; }
+.card-badge-label { font-size: .78rem; font-weight: 700; letter-spacing: .02em; color: rgba(255,255,255,0.85); }
+
+.product-card h3 { color: var(--white); font-size: 1.3rem; margin-bottom: .3em; }
+.product-card p { color: rgba(255,255,255,0.68); font-size: .92rem; max-width: 92%; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
 .tags span {
-  background: var(--bg-alt);
-  color: var(--deep-2);
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.88);
   font-size: .74rem;
   font-weight: 700;
   padding: 5px 12px;
   border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ===== Process ===== */
