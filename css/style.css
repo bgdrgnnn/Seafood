@@ -172,6 +172,104 @@ p { margin: 0 0 1em; }
 
 .hero-wave { position: absolute; bottom: -1px; left: 0; width: 100%; height: 90px; }
 
+/* ===== Scroll Tilt Showcase ===== */
+.scroll-tilt-wrap {
+  position: relative;
+  min-height: 900px;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  overflow: hidden;
+}
+.scroll-tilt-inner {
+  width: 100%;
+  max-width: 1080px;
+  padding: 90px 0 70px;
+  perspective: 1200px;
+}
+.scroll-tilt-header {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+  will-change: transform;
+}
+.scroll-tilt-header h2 {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  color: var(--deep);
+  margin: 0;
+}
+.scroll-tilt-header h2 span {
+  display: inline-block;
+  margin-top: .15em;
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--teal-2);
+}
+
+.scroll-tilt-card {
+  max-width: 980px;
+  margin: 0 auto;
+  height: clamp(380px, 46vw, 560px);
+  border: 4px solid #4B5A5C;
+  background: #14232A;
+  border-radius: 28px;
+  padding: 10px;
+  box-shadow: 0 30px 60px rgba(7,59,76,0.25), 0 12px 24px rgba(7,59,76,0.15);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.scroll-tilt-panel {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-alt);
+  padding: 16px;
+  display: flex;
+}
+.tilt-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 12px;
+  width: 100%;
+}
+.tilt-tile {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c1) 80%, #04141a), color-mix(in srgb, var(--c2) 65%, #04141a));
+}
+.tilt-tile img {
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,0.4));
+}
+.tilt-tile-icon { width: 46%; height: 46%; opacity: 0.9; }
+.tilt-tile span {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 720px) {
+  .scroll-tilt-wrap { min-height: 760px; }
+  .scroll-tilt-inner { padding: 64px 0 48px; }
+  .scroll-tilt-card { height: clamp(420px, 130vw, 620px); }
+  .tilt-collage { grid-template-columns: repeat(2, 1fr); }
+  .tilt-tile span { font-size: 0.66rem; }
+}
+
 /* ===== About ===== */
 .about-grid {
   display: grid;

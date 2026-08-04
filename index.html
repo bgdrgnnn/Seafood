@@ -62,6 +62,54 @@
     <svg class="hero-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,40 C240,100 480,0 720,40 C960,80 1200,20 1440,50 L1440,100 L0,100 Z" fill="#F7FAFC"></path></svg>
   </section>
 
+  <!-- ===== SCROLL SHOWCASE (foto produk, tilt 3D saat discroll) ===== -->
+  <section class="scroll-tilt-wrap" id="scrollTiltWrap">
+    <div class="scroll-tilt-inner">
+      <div class="scroll-tilt-header" id="scrollTiltHeader">
+        <p class="eyebrow">Dari Laut ke Meja Dunia</p>
+        <h2>Kesegaran yang Terlihat,<br><span>Kualitas yang Terasa.</span></h2>
+      </div>
+      <div class="scroll-tilt-card" id="scrollTiltCard">
+        <div class="scroll-tilt-panel">
+          <div class="tilt-collage">
+            <div class="tilt-tile" style="--c1:#0891B2;--c2:#17BEBB">
+              <img src="images/cumi.webp" alt="Cumi-Cumi" loading="lazy">
+              <span>Cumi-Cumi</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#0B6E7A;--c2:#073B4C">
+              <img src="images/gurita.webp" alt="Gurita" loading="lazy">
+              <span>Gurita</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#17BEBB;--c2:#0891B2">
+              <img src="images/udang.webp" alt="Udang" loading="lazy">
+              <span>Udang</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#FF6B6B;--c2:#C0392B">
+              <img src="images/kepiting.webp" alt="Kepiting" loading="lazy">
+              <span>Kepiting</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#EF4444;--c2:#991B1B">
+              <img src="images/lobster.webp" alt="Lobster" loading="lazy">
+              <span>Lobster</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#FFB703;--c2:#FB8500">
+              <img src="images/tuna.webp" alt="Tuna" loading="lazy">
+              <span>Tuna</span>
+            </div>
+            <div class="tilt-tile" style="--c1:#FB8500;--c2:#E85D75">
+              <img src="images/salmon.webp" alt="Salmon" loading="lazy">
+              <span>Salmon</span>
+            </div>
+            <div class="tilt-tile tilt-tile--text" style="--c1:#0B6E7A;--c2:#17BEBB">
+              <svg viewBox="0 0 100 100" class="tilt-tile-icon" aria-hidden="true"><ellipse cx="45" cy="50" rx="34" ry="18" fill="#fff"/><path d="M79 50l16-14v28z" fill="#fff"/><circle cx="20" cy="45" r="3.5" fill="#073B4C"/></svg>
+              <span>Ikan Lainnya</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TENTANG KAMI ===== -->
   <section class="section" id="tentang">
     <div class="container about-grid">
@@ -469,6 +517,7 @@
 <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
 
 <script src="js/hero-gradient.js"></script>
+<script src="js/scroll-tilt.js"></script>
 <script src="js/showcase.js"></script>
 <script src="js/main.js"></script>
 </body>
