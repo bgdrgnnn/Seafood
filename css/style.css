@@ -76,11 +76,34 @@ p { margin: 0 0 1em; }
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(251, 133, 0, 0.36); }
 .btn-outline {
-  background: rgba(255,255,255,.35);
-  border-color: rgba(7,59,76,.35);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(255,255,255,.3);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border-color: rgba(255,255,255,.6);
   color: var(--deep);
+  box-shadow: 0 8px 24px rgba(7,59,76,0.12), inset 0 1px 0 rgba(255,255,255,0.7);
 }
-.btn-outline:hover { background: rgba(255,255,255,.55); transform: translateY(-2px); }
+.btn-outline:hover { background: rgba(255,255,255,.48); transform: translateY(-2px); }
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -75%;
+  width: 45%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.7), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  /* Negative z-index (rather than the positive index used on the glass
+     cards) because this button's label is bare text with no wrapping
+     element to promote above the sweep — a negative index still paints
+     behind the anchor's own inline text per normal stacking order. */
+  z-index: -1;
+}
+.btn-outline:hover::before { left: 130%; }
 
 /* ===== Header ===== */
 .site-header {
@@ -196,11 +219,12 @@ p { margin: 0 0 1em; }
   gap: 28px;
 }
 .feature-card {
-  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   border-radius: var(--radius);
   padding: 32px 28px;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
 }
 .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .feature-icon { width: 48px; height: 48px; margin-bottom: 18px; }
@@ -299,12 +323,44 @@ p { margin: 0 0 1em; }
   margin-bottom: 64px;
 }
 .process-step {
-  background: var(--white);
+  overflow: hidden;
+  isolation: isolate;
   border-radius: var(--radius);
   padding: 26px 20px;
-  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
   position: relative;
 }
+.process-step:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+/* ===== Liquid glass treatment =====
+   Frosted-glass look (translucent fill + blur + rim highlight) with a
+   sweeping shine on hover, in place of a literal WebGL liquid-metal shader —
+   this is a static site with no React/build step, so the effect is ported
+   as pure CSS rather than pulling in @paper-design/shaders + React. */
+.feature-card,
+.process-step {
+  background: linear-gradient(160deg, rgba(255,255,255,0.75), rgba(255,255,255,0.32));
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 8px 28px rgba(7,59,76,0.08), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.feature-card::before,
+.process-step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -75%;
+  width: 45%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.65), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.feature-card:hover::before,
+.process-step:hover::before { left: 130%; }
+.feature-card > *, .process-step > * { position: relative; z-index: 2; }
 .process-num {
   display: inline-block;
   font-size: .85rem;
