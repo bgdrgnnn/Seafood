@@ -199,7 +199,9 @@
     if (!activeBtn) return;
     indicator.style.left = `${activeBtn.offsetLeft}px`;
     indicator.style.width = `${activeBtn.offsetWidth}px`;
-    indicator.style.background = `linear-gradient(135deg, ${SHOWCASE_PRODUCTS[targetIndex].colors.c1}, ${SHOWCASE_PRODUCTS[targetIndex].colors.c2})`;
+    const c1 = SHOWCASE_PRODUCTS[targetIndex].colors.c1;
+    const c2 = SHOWCASE_PRODUCTS[targetIndex].colors.c2;
+    indicator.style.background = `linear-gradient(135deg, ${hexToRgba(c1, 0.55)}, ${hexToRgba(c2, 0.55)})`;
   }
 
   function goToProduct(index) {
