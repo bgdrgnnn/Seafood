@@ -95,18 +95,22 @@
       surf *= pow(uv.y, .3);
       surf = pow(surf, 2.);
 
+      // True CSS-"cover" fit: crop whichever axis overflows so the image
+      // fills the canvas with no gaps, at any aspect ratio. (The original
+      // component scaled the *matching* axis up instead of the overflowing
+      // axis down, which frames a shrunken, soft-edged tile rather than a
+      // full-bleed background — fine for a floating demo tile, not for a
+      // hero backdrop.)
       vec2 img_uv = vUv;
       img_uv -= .5;
       if (u_ratio > u_img_ratio) {
-        img_uv.x = img_uv.x * u_ratio / u_img_ratio;
-      } else {
         img_uv.y = img_uv.y * u_img_ratio / u_ratio;
+      } else {
+        img_uv.x = img_uv.x * u_ratio / u_img_ratio;
       }
-      // The original component uses 1.4 here, which crops the image down to a
-      // centered, soft-edged pane (meant for a floating tile over a plain
-      // background). For a full-bleed hero background we want the ripple to
-      // cover edge-to-edge instead, so this stays close to 1.
-      float scale_factor = 1.05;
+      // Tiny overscan so float rounding never exposes a hairline of the
+      // fallback background at the edges.
+      float scale_factor = 1.02;
       img_uv *= scale_factor;
       img_uv += .5;
       img_uv.y = 1. - img_uv.y;
