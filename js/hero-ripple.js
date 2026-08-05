@@ -108,9 +108,20 @@
       } else {
         img_uv.x = img_uv.x * u_ratio / u_img_ratio;
       }
-      // Tiny overscan so float rounding never exposes a hairline of the
-      // fallback background at the edges.
-      float scale_factor = 1.02;
+      // edge_alpha below fades to transparent over the outer 0.02 of texture
+      // space on every side ([0,0.02] and [0.98,1]). At scale_factor=1 the
+      // "matching" axis above lands screen edges exactly on that boundary
+      // (texture coord 0/1), i.e. fully in the fade band — going *above* 1
+      // only pushes it further into the fully-transparent region beyond,
+      // never past the band. Dipping slightly *below* 1 (zooming in a touch
+      // more than exact cover) is what pulls the matching axis's screen-edge
+      // sample back inside the opaque interior, past the fade band.
+      // The ripple distortion below (img_uv += water/surface_distortion *
+      // noise) nudges this coordinate by roughly +/-0.05 on top of the cover
+      // fit, so the margin past the fade band needs to absorb that too, not
+      // just the 0.02 band itself — otherwise the edge flickers in and out
+      // of the fallback background as the animation runs.
+      float scale_factor = 0.8;
       img_uv *= scale_factor;
       img_uv += .5;
       img_uv.y = 1. - img_uv.y;
