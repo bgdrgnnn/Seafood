@@ -143,7 +143,7 @@ p { margin: 0 0 1em; }
   background: radial-gradient(circle at 85% 20%, rgba(255,255,255,0.5), transparent 45%),
               radial-gradient(circle at 30% 90%, rgba(255,209,102,0.28), transparent 40%);
 }
-/* Animated WebGL gradient (js/hero-gradient.js) painted on top of .hero-bg.
+/* Animated WebGL water ripple (js/hero-ripple.js) painted on top of .hero-bg.
    .hero-bg stays underneath as the fallback when WebGL is unavailable. */
 .hero-canvas {
   position: absolute;
@@ -189,8 +189,14 @@ p { margin: 0 0 1em; }
   width: 100%;
   height: auto;
   padding: 28px;
-  background: radial-gradient(circle at 50% 50%, #E6F7F6 62%, transparent 64%);
-  border-radius: 20px;
+  animation: about-logo-float 4s ease-in-out infinite;
+}
+@keyframes about-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-logo { animation: none; }
 }
 .about-copy h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
 .about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
