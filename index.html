@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bahari Seafood — Eksportir Hasil Laut Segar Indonesia</title>
 <meta name="description" content="Bahari Seafood adalah produsen dan eksportir cumi-cumi, gurita, udang, kepiting, lobster, tuna, salmon, dan aneka ikan laut segar berkualitas ekspor dari Indonesia.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23073b4c'/%3E%3Cpath d='M20 55c10-20 30-25 45-15 8 5 12 12 15 15-3 3-7 10-15 15-15 10-35 5-45-15z' fill='%2317bebb'/%3E%3Ccircle cx='30' cy='50' r='3.5' fill='%23073b4c'/%3E%3Cpath d='M20 55l-10-8m10 8l-10 8' stroke='%2317bebb' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="icon" href="images/bahari-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,9 +14,7 @@
 <header class="site-header" id="header">
   <div class="container header-inner">
     <a href="#beranda" class="logo">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 100 100"><path d="M15 55c12-22 34-27 50-16 9 6 13 13 16 16-3 3-7 11-16 16-16 11-38 6-50-16z" fill="currentColor"/><circle cx="27" cy="49" r="3.5" fill="#073B4C"/><path d="M15 55L4 46m11 9L4 64" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg>
-      </span>
+      <img src="images/bahari-logo.png" alt="Bahari Seafood" class="logo-mark logo-mark--bahari">
       <span class="logo-text">Bahari<em>Seafood</em></span>
     </a>
 
@@ -42,6 +40,7 @@
   <section class="hero" id="beranda">
     <div class="hero-bg" aria-hidden="true"></div>
     <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-copy reveal">
         <p class="eyebrow">Eksportir Hasil Laut Indonesia</p>
@@ -65,15 +64,7 @@
   <section class="section" id="tentang">
     <div class="container about-grid">
       <div class="about-visual reveal">
-        <div class="about-frame">
-          <svg viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="95" fill="#E6F7F6"/>
-            <path d="M20 120c30-55 90-70 135-40 20 13 30 30 35 40-5 10-15 27-35 40-45 30-105 15-135-40z" fill="#17BEBB"/>
-            <path d="M20 120c-14-8-25-12-38-12M20 120c-14 10-25 15-38 15" stroke="#17BEBB" stroke-width="9" stroke-linecap="round"/>
-            <circle cx="52" cy="103" r="7" fill="#073B4C"/>
-            <path d="M40 165c25-30 60-35 90-20" stroke="#FFB703" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6"/>
-          </svg>
-        </div>
+        <img src="images/bahari-logo.png" alt="Bahari Seafood" class="about-logo">
       </div>
       <div class="about-copy reveal">
         <p class="eyebrow">Tentang Kami</p>
@@ -132,6 +123,57 @@
       <div class="about-sub-head reveal">
         <h3>Dari Laut Hingga ke Tangan Anda</h3>
         <p>Alur kerja yang rapi menjaga kualitas produk tetap prima sampai ke pelabuhan tujuan.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <span class="process-num">01</span>
+          <h3>Sourcing</h3>
+          <p>Pengadaan hasil laut dari nelayan &amp; tambak mitra terpilih.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">02</span>
+          <h3>Quality Control</h3>
+          <p>Sortasi ukuran, pengecekan kesegaran, dan standar mutu produk.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">03</span>
+          <h3>Processing &amp; Packing</h3>
+          <p>Pencucian, pembekuan cepat, dan pengemasan sesuai standar ekspor.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">04</span>
+          <h3>Cold Storage</h3>
+          <p>Penyimpanan suhu rendah terkontrol untuk menjaga kesegaran produk.</p>
+        </div>
+        <div class="process-step reveal">
+          <span class="process-num">05</span>
+          <h3>Ekspor &amp; Pengiriman</h3>
+          <p>Dokumentasi lengkap dan koordinasi logistik untuk pengiriman domestik &amp; internasional.</p>
+        </div>
+      </div>
+
+      <div class="markets reveal">
+        <h3>Melayani Permintaan dari Berbagai Kawasan</h3>
+        <div class="market-tags">
+          <span>Asia Timur</span>
+          <span>Asia Tenggara</span>
+          <span>Timur Tengah</span>
+          <span>Eropa</span>
+          <span>Amerika</span>
+          <span>Domestik</span>
+        </div>
+        <p class="markets-note">Terbuka untuk kerja sama ekspor B2B dan pasokan grosir domestik — hubungi tim kami untuk penawaran &amp; sampel produk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROSES EKSPOR ===== -->
+  <section class="section section-alt" id="ekspor">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Proses Kerja</p>
+        <h2>Dari Laut Hingga ke Tangan Anda</h2>
+        <p class="section-sub">Alur kerja yang rapi menjaga kualitas produk tetap prima sampai ke pelabuhan tujuan.</p>
       </div>
       <div class="process-grid">
         <div class="process-step reveal">
@@ -530,9 +572,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="#beranda" class="logo">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100"><path d="M15 55c12-22 34-27 50-16 9 6 13 13 16 16-3 3-7 11-16 16-16 11-38 6-50-16z" fill="currentColor"/><circle cx="27" cy="49" r="3.5" fill="#073B4C"/></svg>
-        </span>
+        <img src="images/bahari-logo.png" alt="Bahari Seafood" class="logo-mark logo-mark--bahari">
         <span class="logo-text">Bahari<em>Seafood</em></span>
       </a>
       <p>Eksportir &amp; pemasok hasil laut segar berkualitas — cumi, gurita, udang, kepiting, lobster, tuna, salmon, dan aneka ikan Indonesia.</p>
@@ -596,7 +636,7 @@
   </div>
 </nav>
 
-<script src="js/hero-gradient.js"></script>
+<script src="js/hero-ripple.js"></script>
 <script src="js/dock.js"></script>
 <script src="js/showcase.js"></script>
 <script src="js/main.js"></script>
