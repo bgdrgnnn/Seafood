@@ -195,6 +195,14 @@ p { margin: 0 0 1em; }
   font-size: .75rem; flex-shrink: 0;
 }
 
+/* Sub-blocks within the merged Tentang/Keunggulan/Proses Ekspor section —
+   smaller than .section-head since they're internal dividers, not a new
+   page section of their own. */
+.about-sub { margin-top: 84px; }
+.about-sub-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
+.about-sub-head h3 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--deep); margin-bottom: .35em; }
+.about-sub-head p { color: var(--text-muted); margin: 0; }
+
 /* ===== Features ===== */
 .feature-grid {
   display: grid;
@@ -858,6 +866,7 @@ p { margin: 0 0 1em; }
   .feature-grid, .product-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .about-points { grid-template-columns: 1fr; }
+  .about-sub { margin-top: 56px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
 }
