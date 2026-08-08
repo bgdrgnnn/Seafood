@@ -68,9 +68,36 @@
     panel.addEventListener('mouseleave', onLeave);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  // The dock is fixed to the bottom of the viewport, which puts it right on
+  // top of the footer's nav columns and copyright line once the user scrolls
+  // that far — fade it out while the footer is in view instead of letting it
+  // sit over that content.
+  function initFooterFade() {
+    const dock = document.querySelector('.dock');
+    const footer = document.querySelector('.site-footer');
+    if (!dock || !footer || !('IntersectionObserver' in window)) return;
+
+    // Positive bottom margin extends the intersection root past the actual
+    // viewport edge, so this fires slightly before the footer is visually on
+    // screen — a negative margin here would require the footer to already be
+    // substantially visible before hiding the dock, which is backwards for a
+    // dock that's supposed to get out of the way pre-emptively.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        dock.classList.toggle('dock--hidden', entry.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px 120px 0px' });
+    io.observe(footer);
+  }
+
+  function initAll() {
     init();
+    initFooterFade();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
   }
 })();
