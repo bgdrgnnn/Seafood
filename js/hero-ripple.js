@@ -9,6 +9,15 @@
 
 (function () {
 
+  // Resolved from this script's own URL (not the page's) so the image loads
+  // correctly regardless of which directory the including HTML lives in —
+  // 'images/hero-water.jpg' as a page-relative path broke on en/index.html,
+  // which sits one directory deeper than js/hero-ripple.js.
+  const SCRIPT_URL = document.currentScript && document.currentScript.src;
+  const IMAGE_SRC = SCRIPT_URL
+    ? new URL('../images/hero-water.jpg', SCRIPT_URL).href
+    : 'images/hero-water.jpg';
+
   const VERTEX_SRC = `
     precision mediump float;
     attribute vec2 a_position;
@@ -146,7 +155,6 @@
     }
   `;
 
-  const IMAGE_SRC = 'images/hero-water.jpg';
   const PARAMS = {
     blueish: 0.4,
     scale: 7,
@@ -157,7 +165,9 @@
 
   function init() {
     const canvas = document.getElementById('heroCanvas');
-    const container = document.getElementById('beranda');
+    // .hero, not #beranda — the hero section's id is localized per-language
+    // (the English page uses #home), but this class name isn't.
+    const container = document.querySelector('.hero');
     if (!canvas || !container) return;
 
     const gl = canvas.getContext('webgl');
