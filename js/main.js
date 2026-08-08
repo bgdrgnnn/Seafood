@@ -5,21 +5,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
+  const navBackdrop = document.getElementById('navBackdrop');
 
   if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = mainNav.classList.toggle('open');
+    const setOpen = (isOpen) => {
+      mainNav.classList.toggle('open', isOpen);
       navToggle.classList.toggle('open', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
+      if (navBackdrop) navBackdrop.classList.toggle('visible', isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
+    };
+
+    navToggle.addEventListener('click', () => {
+      setOpen(!mainNav.classList.contains('open'));
     });
 
     mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setOpen(false));
     });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', () => setOpen(false));
+    }
   }
 
   // Scroll reveal animation
