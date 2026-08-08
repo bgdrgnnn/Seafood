@@ -60,9 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   if (contactForm && formStatus) {
+    const isEnglish = document.documentElement.lang === 'en';
+    const successMessage = isEnglish
+      ? 'Thank you! Your message has been received. Our team will get back to you shortly.'
+      : 'Terima kasih! Pesan Anda telah diterima. Tim kami akan segera menghubungi Anda.';
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      formStatus.textContent = 'Terima kasih! Pesan Anda telah diterima. Tim kami akan segera menghubungi Anda.';
+      formStatus.textContent = successMessage;
       contactForm.reset();
     });
   }
