@@ -254,6 +254,28 @@ body.nav-open { overflow: hidden; }
   font-size: .75rem; flex-shrink: 0;
 }
 
+.compro-cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+  padding: 22px 26px;
+  background: var(--bg-alt);
+  border: 1px solid rgba(8,26,46,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.compro-icon { width: 44px; height: 44px; flex-shrink: 0; color: var(--gold-2); }
+.compro-icon svg { width: 100%; height: 100%; }
+.compro-text { flex: 1; }
+.compro-text h3 { font-size: 1.05rem; margin-bottom: .2em; }
+.compro-text p { margin: 0; font-size: .9rem; color: var(--text-muted); }
+.compro-btn { flex-shrink: 0; }
+@media (max-width: 640px) {
+  .compro-cta { flex-direction: column; align-items: flex-start; }
+  .compro-btn { width: 100%; }
+}
+
 /* Sub-blocks within the merged Tentang/Keunggulan/Proses Ekspor section —
    smaller than .section-head since they're internal dividers, not a new
    page section of their own. */
