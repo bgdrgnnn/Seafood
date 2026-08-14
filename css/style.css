@@ -735,9 +735,12 @@ body.nav-open { overflow: hidden; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
 
+.gallery-preview-cta { text-align: center; margin-top: 40px; }
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   gap: 24px;
 }
 .video-card {
@@ -746,7 +749,7 @@ body.nav-open { overflow: hidden; }
   box-shadow: var(--shadow);
   background: #000;
 }
-.video-card video { display: block; width: 100%; height: auto; max-height: 70vh; margin: 0 auto; }
+.video-card video { display: block; width: 100%; height: auto; }
 .video-card-caption { padding: 14px 18px; background: var(--bg-alt); }
 .video-card-caption h3 { font-size: 1rem; margin: 0 0 .2em; color: var(--deep); }
 .video-card-caption span { font-size: .8rem; color: var(--text-muted); }
