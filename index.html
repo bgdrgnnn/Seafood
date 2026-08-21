@@ -45,19 +45,30 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-mesh" aria-hidden="true">
+      <span class="hero-blob hero-blob--1"></span>
+      <span class="hero-blob hero-blob--2"></span>
+      <span class="hero-blob hero-blob--3"></span>
+      <span class="hero-blob hero-blob--4"></span>
+      <span class="hero-grain"></span>
+    </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Indonesian Seafood Exporter</p>
-        <h1>Export-Grade Fresh Seafood,<br> from the Seas of Indonesia to the World</h1>
-        <p class="hero-desc">Bahari Seafood supplies and exports squid, octopus, shrimp, crab, lobster, tuna, salmon, and a wide range of fresh seafood, backed by strict quality standards, an unbroken cold chain, and complete export documentation.</p>
-        <div class="hero-actions">
-          <a href="#products" class="btn btn-primary">View Our Products</a>
+      <div class="hero-copy">
+        <p class="hero-badge intro-in" style="--d:.3s">
+          <svg class="hero-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7L12 3z"/></svg>
+          Indonesian Seafood Exporter
+        </p>
+        <h1 class="hero-title">
+          <span class="hero-line"><span class="hero-word intro-in" style="--d:.42s">Export-Grade</span><span class="hero-word intro-in" style="--d:.48s">Fresh</span><span class="hero-word intro-in" style="--d:.54s">Seafood,</span></span>
+          <span class="hero-line"><span class="hero-word intro-in" style="--d:.62s">from</span><span class="hero-word intro-in" style="--d:.68s">the</span><span class="hero-word intro-in" style="--d:.74s">Seas</span><span class="hero-word intro-in" style="--d:.80s">of</span><span class="hero-word intro-in" style="--d:.86s">Indonesia</span><span class="hero-word intro-in" style="--d:.92s">to</span><span class="hero-word intro-in" style="--d:.98s">the</span><span class="hero-word intro-in" style="--d:1.04s">World</span></span>
+        </h1>
+        <p class="hero-desc intro-in" style="--d:1.2s">Bahari Seafood supplies and exports squid, octopus, shrimp, crab, lobster, tuna, salmon, and a wide range of fresh seafood, backed by strict quality standards, an unbroken cold chain, and complete export documentation.</p>
+        <div class="hero-actions intro-in" style="--d:1.5s">
+          <a href="#products" class="btn btn-primary">View Our Products <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a href="#contact" class="btn btn-outline">Start a Partnership</a>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats intro-in" style="--d:1.75s">
           <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Fresh &amp; Frozen Quality</span></div>
           <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Seafood Categories</span></div>
           <div class="stat"><span class="stat-num">-18°C</span><span class="stat-label">Cold Chain Maintained</span></div>
@@ -630,7 +641,6 @@
   </div>
 </nav>
 
-<script src="js/hero-ripple.js"></script>
 <script src="js/dock.js"></script>
 <script src="js/main.js"></script>
 </body>
