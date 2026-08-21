@@ -110,15 +110,19 @@ p { margin: 0 0 1em; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(245, 243, 238, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(8, 26, 46,0.06);
+  background: rgba(245, 243, 238, 0.55);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 24px rgba(8, 26, 46,0.05);
 }
 .header-inner {
   display: flex;
   align-items: center;
   gap: 24px;
   height: 76px;
+  max-width: 100%;
+  padding: 0 40px;
 }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: var(--deep); flex-shrink: 0; }
 .logo-mark--bahari { display: block; width: 52px; height: 52px; object-fit: contain; }
