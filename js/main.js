@@ -29,6 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Header blends into the hero (transparent, light text) until the hero
+  // scrolls out from behind it, then switches to the glass/solid look.
+  // Pages with no .hero (e.g. Gallery) simply keep the glass look always.
+  const siteHeader = document.querySelector('.site-header');
+  const heroEl = document.querySelector('.hero');
+  if (siteHeader && heroEl && 'IntersectionObserver' in window) {
+    const headerH = siteHeader.offsetHeight;
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        siteHeader.classList.toggle('site-header--on-hero', entry.isIntersecting);
+      },
+      { rootMargin: `-${headerH}px 0px 0px 0px`, threshold: 0 }
+    );
+    heroObserver.observe(heroEl);
+  }
+
   // Scroll reveal animation
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

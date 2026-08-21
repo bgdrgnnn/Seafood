@@ -115,7 +115,28 @@ p { margin: 0 0 1em; }
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,0.4);
   box-shadow: 0 8px 24px rgba(8, 26, 46,0.05);
+  transition: background .35s ease, backdrop-filter .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
+/* While the hero is still behind it, the header sheds its own background
+   entirely and blends into the hero — js/main.js adds/removes this via an
+   IntersectionObserver on .hero, so pages without a hero (Gallery) simply
+   never get it and keep the glass look above. */
+.site-header--on-hero {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+.site-header--on-hero .logo,
+.site-header--on-hero .main-nav a,
+.site-header--on-hero .lang-switch {
+  color: var(--white);
+}
+.site-header--on-hero .lang-switch { border-color: rgba(255,255,255,0.5); }
+.site-header--on-hero .lang-switch:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+.site-header--on-hero .nav-toggle span { background: var(--white); }
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -124,12 +145,12 @@ p { margin: 0 0 1em; }
   max-width: 100%;
   padding: 0 40px;
 }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: var(--deep); flex-shrink: 0; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: var(--deep); flex-shrink: 0; transition: color .35s ease; }
 .logo-mark--bahari { display: block; width: 52px; height: 52px; object-fit: contain; }
 .logo-text em { font-style: normal; color: var(--gold-2); }
 
 .main-nav { display: flex; gap: 16px; justify-content: center; flex: 1; }
-.main-nav a { font-weight: 600; font-size: .92rem; color: var(--text); position: relative; padding: 6px 0; white-space: nowrap; }
+.main-nav a { font-weight: 600; font-size: .92rem; color: var(--text); position: relative; padding: 6px 0; white-space: nowrap; transition: color .35s ease; }
 .main-nav a::after {
   content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
   background: var(--gold); transition: width .2s ease;
@@ -640,8 +661,9 @@ body.nav-open { overflow: hidden; }
    transition here is what gives that a springy, non-jittery feel. */
 .dock {
   position: fixed;
-  right: 24px;
-  bottom: 22px;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
   z-index: 95;
   max-width: calc(100vw - 24px);
   transition: opacity .25s ease, transform .25s ease;
@@ -651,7 +673,7 @@ body.nav-open { overflow: hidden; }
    copyright line, since both are fixed/near the bottom of the page. */
 .dock--hidden {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateX(-50%) translateY(12px);
   pointer-events: none;
 }
 .dock-panel {
@@ -712,7 +734,7 @@ body.nav-open { overflow: hidden; }
   transform: translateX(-50%) translateY(0);
 }
 @media (max-width: 640px) {
-  .dock { bottom: 14px; right: 14px; }
+  .dock { bottom: 14px; }
   .dock-panel { gap: 6px; padding: 8px 10px; border-radius: 18px; }
   .dock-item { width: 38px; height: 38px; border-radius: 11px; }
   .dock-tooltip { display: none; }
