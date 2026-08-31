@@ -365,13 +365,6 @@ body.nav-open { overflow: hidden; }
 .about-sub-head h3 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--deep); margin-bottom: .35em; }
 .about-sub-head p { color: var(--text-muted); margin: 0; }
 
-/* Same sub-head style, used directly between two .gallery-grid blocks on
-   the homepage preview (not wrapped in .about-sub, which is specific to
-   the merged About section) — first one sits right under the section
-   intro, the rest need the gap a new grid needs from the one above it. */
-.gallery-preview-sub-head { margin-top: 8px; }
-.gallery-grid + .gallery-preview-sub-head { margin-top: 64px; }
-
 /* ===== Features ===== */
 .feature-grid {
   display: grid;
@@ -448,17 +441,6 @@ body.nav-open { overflow: hidden; }
 .product-specs { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; margin: 0; font-size: .82rem; }
 .product-specs dt { color: var(--text-muted); font-weight: 700; }
 .product-specs dd { margin: 0; color: var(--text); }
-
-.product-terms {
-  margin: 32px 0 0;
-  padding: 16px 22px;
-  background: var(--bg);
-  border: 1px dashed rgba(8, 26, 46,0.16);
-  border-radius: var(--radius);
-  color: var(--text-muted);
-  font-size: .86rem;
-  text-align: center;
-}
 
 /* ===== Process ===== */
 .process-grid {
