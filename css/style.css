@@ -365,6 +365,13 @@ body.nav-open { overflow: hidden; }
 .about-sub-head h3 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--deep); margin-bottom: .35em; }
 .about-sub-head p { color: var(--text-muted); margin: 0; }
 
+/* Same sub-head style, used directly between two .gallery-grid blocks on
+   the homepage preview (not wrapped in .about-sub, which is specific to
+   the merged About section) — first one sits right under the section
+   intro, the rest need the gap a new grid needs from the one above it. */
+.gallery-preview-sub-head { margin-top: 8px; }
+.gallery-grid + .gallery-preview-sub-head { margin-top: 64px; }
+
 /* ===== Features ===== */
 .feature-grid {
   display: grid;
