@@ -235,12 +235,21 @@ body.nav-open { overflow: hidden; }
    Extended 77px above .hero's own top (matching .site-header's height) so
    the gradient still fills the area behind the header instead of leaving
    the page's plain cream background showing through it. */
-.hero-mesh { position: absolute; top: -77px; left: 0; right: 0; bottom: 0; z-index: -2; overflow: hidden; background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 55%, white) 100%); }
+/* Deep, moody navy-to-black gradiation with a soft gold "spotlight" behind
+   the badge/title (echoing the brand's Instagram template) plus a radial
+   vignette that darkens the corners so the middle stays readable. */
+.hero-mesh {
+  position: absolute; top: -77px; left: 0; right: 0; bottom: 0; z-index: -2; overflow: hidden;
+  background:
+    radial-gradient(760px circle at 50% -8%, rgba(212,160,23,0.3), transparent 62%),
+    radial-gradient(140% 120% at 50% 100%, transparent 35%, rgba(2,7,14,0.7) 100%),
+    linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-deep) 100%);
+}
 .hero-blob { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
-.hero-blob--1 { width: 640px; height: 640px; left: -160px; top: -180px; background: radial-gradient(circle at 30% 30%, var(--brand-gold), transparent 70%); opacity: .62; animation: heroDrift1 22s ease-in-out infinite; }
-.hero-blob--2 { width: 560px; height: 560px; right: -160px; top: 8%; background: radial-gradient(circle at 60% 40%, var(--cream), transparent 70%); opacity: .34; animation: heroDrift2 26s ease-in-out infinite; }
-.hero-blob--3 { width: 560px; height: 560px; left: 8%; bottom: -260px; background: radial-gradient(circle at 50% 50%, var(--brand-gold), transparent 70%); opacity: .38; animation: heroDrift3 30s ease-in-out infinite; }
-.hero-blob--4 { width: 420px; height: 420px; right: 6%; bottom: -180px; background: radial-gradient(circle at 40% 60%, var(--cream), transparent 70%); opacity: .3; animation: heroDrift1 18s ease-in-out infinite reverse; }
+.hero-blob--1 { width: 640px; height: 640px; left: -160px; top: -180px; background: radial-gradient(circle at 30% 30%, var(--brand-gold), transparent 70%); opacity: .4; animation: heroDrift1 22s ease-in-out infinite; }
+.hero-blob--2 { width: 560px; height: 560px; right: -160px; top: 8%; background: radial-gradient(circle at 60% 40%, var(--cream), transparent 70%); opacity: .16; animation: heroDrift2 26s ease-in-out infinite; }
+.hero-blob--3 { width: 560px; height: 560px; left: 8%; bottom: -260px; background: radial-gradient(circle at 50% 50%, var(--brand-gold), transparent 70%); opacity: .22; animation: heroDrift3 30s ease-in-out infinite; }
+.hero-blob--4 { width: 420px; height: 420px; right: 6%; bottom: -180px; background: radial-gradient(circle at 40% 60%, var(--cream), transparent 70%); opacity: .16; animation: heroDrift1 18s ease-in-out infinite reverse; }
 .hero-grain { position: absolute; inset: 0; opacity: .05; mix-blend-mode: overlay;
   background-image: repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, #fff 0 1px, transparent 1px 3px); }
 @keyframes heroDrift1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,30px) scale(1.08); } }
@@ -256,7 +265,7 @@ body.nav-open { overflow: hidden; }
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(8, 26, 46,0.12), rgba(8, 26, 46,0.24));
+  background: linear-gradient(180deg, rgba(2, 7, 14,0.08), rgba(2, 7, 14,0.32));
   pointer-events: none;
 }
 .hero-inner {
@@ -639,7 +648,15 @@ body.nav-open { overflow: hidden; }
 .form-status { text-align: center; font-weight: 600; color: var(--deep-2); min-height: 1.4em; margin: 12px 0 0; }
 
 /* ===== Footer ===== */
-.site-footer { background: var(--deep); color: rgba(255,255,255,0.8); padding-top: 64px; }
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(600px circle at 12% 0%, rgba(212,160,23,0.14), transparent 60%),
+    linear-gradient(190deg, var(--navy) 0%, var(--navy-deep) 55%, #030a13 100%);
+  color: rgba(255,255,255,0.8);
+  padding-top: 64px;
+}
 .footer-inner {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
@@ -776,7 +793,11 @@ body.nav-open { overflow: hidden; }
 
 /* ===== Gallery Page ===== */
 .page-hero {
-  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(600px circle at 50% -10%, rgba(212,160,23,0.24), transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 70%, #030a13 100%);
   padding: 88px 0 64px;
   text-align: center;
   color: var(--white);
