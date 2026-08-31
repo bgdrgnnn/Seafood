@@ -489,12 +489,83 @@ body.nav-open { overflow: hidden; }
 .markets { text-align: center; }
 .markets h3 { font-size: 1.3rem; }
 .markets-note { color: var(--text-muted); max-width: 560px; margin: 0 auto 28px; font-size: .92rem; }
-.markets-map {
-  display: block;
+
+/* ===== Export map (dotted world map + animated shipping routes) =====
+   Vanilla port of a React/Framer Motion "world map" component: a dotted
+   basemap image (pre-rendered from real geo data via dotted-map + d3-geo,
+   not hand-drawn) with an SVG overlay of routes from Jakarta to four
+   destination hubs. The route "draw" animation and the traveling dot both
+   use plain CSS — pathLength="1" on each <path> normalizes stroke-dasharray
+   so a single dashoffset keyframe animates any curve regardless of its
+   actual length (the vanilla equivalent of the source's Framer Motion
+   `pathLength` prop), and the dot rides the same path via the native CSS
+   `offset-path`/`offset-distance` motion-path properties — no JS needed. */
+.export-map {
+  position: relative;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  opacity: .9;
+  aspect-ratio: 198 / 100;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.export-map-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
+.export-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.route-path {
+  fill: none;
+  stroke: url(#export-route-gradient);
+  stroke-width: .6;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: export-route-draw 7s ease-in-out infinite;
+}
+@keyframes export-route-draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  8% { opacity: 1; }
+  45% { stroke-dashoffset: 0; opacity: 1; }
+  75% { stroke-dashoffset: 0; opacity: 1; }
+  92% { opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+.route-dot { fill: var(--brand-gold); animation: export-dot-move 7s ease-in-out infinite; }
+@keyframes export-dot-move {
+  0% { offset-distance: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  45% { offset-distance: 100%; opacity: 1; }
+  50% { opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+.map-point { fill: var(--navy); }
+.map-point--origin { fill: var(--brand-gold); }
+.pulse-ring {
+  fill: none;
+  stroke: var(--brand-gold);
+  stroke-width: .3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: export-pulse 2.6s ease-out infinite;
+}
+@keyframes export-pulse {
+  0% { transform: scale(1); opacity: .7; }
+  100% { transform: scale(4.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-path { animation: none; stroke-dashoffset: 0; opacity: .85; }
+  .route-dot { animation: none; opacity: 0; }
+  .pulse-ring { animation: none; opacity: 0; }
 }
 
 /* ===== FAQ (horizontal auto-scroll marquee) =====
