@@ -46,11 +46,7 @@
   <!-- ===== HERO ===== -->
   <section class="hero" id="beranda">
     <div class="hero-mesh" aria-hidden="true">
-      <span class="hero-blob hero-blob--1"></span>
-      <span class="hero-blob hero-blob--2"></span>
-      <span class="hero-blob hero-blob--3"></span>
-      <span class="hero-blob hero-blob--4"></span>
-      <span class="hero-grain"></span>
+      <canvas id="heroShaderCanvas" class="hero-shader-canvas"></canvas>
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="container hero-inner">
@@ -641,6 +637,7 @@
   </div>
 </nav>
 
+<script src="../js/hero-shader.js"></script>
 <script src="../js/dock.js"></script>
 <script src="../js/main.js"></script>
 </body>
