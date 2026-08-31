@@ -228,16 +228,14 @@ body.nav-open { overflow: hidden; }
    .hero-mesh clips its own oversized blobs itself, so nothing leaks out. */
 .hero { position: relative; }
 
-/* Animated mesh-gradient background — a vanilla CSS/SVG port of a React
-   "shader hero" component (MeshGradient + framer-motion). No WebGL/build
-   step available on this static site, so the flowing color blobs are
-   approximated with blurred, slowly-drifting radial gradients instead.
-   Extended 77px above .hero's own top (matching .site-header's height) so
-   the gradient still fills the area behind the header instead of leaving
-   the page's plain cream background showing through it. */
-/* Deep, moody navy-to-black gradiation with a soft gold "spotlight" behind
-   the badge/title (echoing the brand's Instagram template) plus a radial
-   vignette that darkens the corners so the middle stays readable. */
+/* Animated gradient background — a vanilla-JS/WebGL port of a React
+   shader component (js/hero-shader.js), rendered onto the canvas below.
+   The gradient here is only the fallback for when WebGL is unavailable
+   (the canvas is left blank/transparent in that case), so it's a static
+   approximation of the shader's navy-and-gold blend. Extended 77px above
+   .hero's own top (matching .site-header's height) so it still fills the
+   area behind the header instead of leaving the page's plain cream
+   background showing through it. */
 .hero-mesh {
   position: absolute; top: -77px; left: 0; right: 0; bottom: 0; z-index: -2; overflow: hidden;
   background:
@@ -245,16 +243,7 @@ body.nav-open { overflow: hidden; }
     radial-gradient(140% 120% at 50% 100%, transparent 35%, rgba(2,7,14,0.7) 100%),
     linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 48%, var(--navy-deep) 100%);
 }
-.hero-blob { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
-.hero-blob--1 { width: 640px; height: 640px; left: -160px; top: -180px; background: radial-gradient(circle at 30% 30%, var(--brand-gold), transparent 70%); opacity: .4; animation: heroDrift1 22s ease-in-out infinite; }
-.hero-blob--2 { width: 560px; height: 560px; right: -160px; top: 8%; background: radial-gradient(circle at 60% 40%, var(--cream), transparent 70%); opacity: .16; animation: heroDrift2 26s ease-in-out infinite; }
-.hero-blob--3 { width: 560px; height: 560px; left: 8%; bottom: -260px; background: radial-gradient(circle at 50% 50%, var(--brand-gold), transparent 70%); opacity: .22; animation: heroDrift3 30s ease-in-out infinite; }
-.hero-blob--4 { width: 420px; height: 420px; right: 6%; bottom: -180px; background: radial-gradient(circle at 40% 60%, var(--cream), transparent 70%); opacity: .16; animation: heroDrift1 18s ease-in-out infinite reverse; }
-.hero-grain { position: absolute; inset: 0; opacity: .05; mix-blend-mode: overlay;
-  background-image: repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, #fff 0 1px, transparent 1px 3px); }
-@keyframes heroDrift1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,30px) scale(1.08); } }
-@keyframes heroDrift2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,20px) scale(.95); } }
-@keyframes heroDrift3 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(20px,-30px) scale(1.06); } }
+.hero-shader-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 
 /* Darkens the mesh gradient evenly so light-colored text stays readable.
    Extended upward 77px too, for the same reason as .hero-mesh above. */
@@ -314,7 +303,6 @@ body.nav-open { overflow: hidden; }
 .intro-in { opacity: 0; animation: heroFadeUp .6s cubic-bezier(.22,1,.36,1) both; animation-delay: var(--d, 0s); }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob { animation: none; }
   .intro-in { animation: none; opacity: 1; transform: none; }
 }
 
