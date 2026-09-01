@@ -436,6 +436,7 @@ body.nav-open { overflow: hidden; }
   padding: 3px 9px;
   border-radius: 6px;
 }
+.product-hs--tbd { color: var(--text-muted); background: rgba(8, 26, 46,0.06); font-style: italic; font-weight: 600; }
 
 .product-specs { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; margin: 0; font-size: .82rem; }
 .product-specs dt { color: var(--text-muted); font-weight: 700; }
