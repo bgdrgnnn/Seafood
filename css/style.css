@@ -405,8 +405,14 @@ body.nav-open { overflow: hidden; }
 }
 .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-.product-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
-.product-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Height comes from the ::before padding-top spacer, not aspect-ratio —
+   on some mobile WebKit versions `aspect-ratio` alone doesn't reliably
+   constrain an absolutely/100%-sized img child, letting it blow out to
+   its native size instead. The percentage-padding trick is old and
+   universally supported, so it's used here as the real sizing mechanism. */
+.product-photo { position: relative; overflow: hidden; }
+.product-photo::before { content: ""; display: block; padding-top: 75%; }
+.product-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .product-category {
   position: absolute;
   top: 12px;
@@ -500,15 +506,17 @@ body.nav-open { overflow: hidden; }
    actual length (the vanilla equivalent of the source's Framer Motion
    `pathLength` prop), and the dot rides the same path via the native CSS
    `offset-path`/`offset-distance` motion-path properties — no JS needed. */
+/* Height comes from the ::before padding-top spacer, not aspect-ratio —
+   see the .product-photo comment above for why. */
 .export-map {
   position: relative;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  aspect-ratio: 198 / 100;
   border-radius: var(--radius);
   overflow: hidden;
 }
+.export-map::before { content: ""; display: block; padding-top: 50.505%; }
 .export-map-bg {
   position: absolute;
   inset: 0;
@@ -839,14 +847,18 @@ body.nav-open { overflow: hidden; }
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+/* Height comes from the ::before padding-top spacer, not aspect-ratio —
+   see the .product-photo comment further up for why. */
 .gallery-item {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 1/1;
   box-shadow: var(--shadow);
 }
+.gallery-item::before { content: ""; display: block; padding-top: 100%; }
 .gallery-item img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
