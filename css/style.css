@@ -33,7 +33,7 @@
    have been snapped to it. */
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+html { scroll-behavior: smooth; scroll-padding-top: 81px; }
 body {
   margin: 0;
   font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -492,9 +492,9 @@ body.nav-open { overflow: hidden; }
 .process-step h3 { font-size: 1rem; }
 .process-step p { font-size: .87rem; color: var(--text-muted); margin: 0; }
 
-.markets { text-align: center; }
-.markets h3 { font-size: 1.3rem; }
-.markets-note { color: var(--text-muted); max-width: 560px; margin: 0 auto 28px; font-size: .92rem; }
+.markets { text-align: center; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--cream); }
+.markets-note { color: var(--text-muted); max-width: 640px; margin: 0 auto 20px; font-size: .92rem; }
+.markets-note strong { color: var(--deep); }
 
 /* ===== Export map (dotted world map + animated shipping routes) =====
    Vanilla port of a React/Framer Motion "world map" component: a dotted
@@ -511,7 +511,7 @@ body.nav-open { overflow: hidden; }
 .export-map {
   position: relative;
   width: 100%;
-  max-width: none;
+  max-width: 760px;
   margin: 0 auto;
   border-radius: var(--radius);
   overflow: hidden;
@@ -883,6 +883,77 @@ body.nav-open { overflow: hidden; }
 
 .gallery-preview-cta { text-align: center; margin-top: 40px; }
 
+/* ===== Gallery story strip (homepage preview) =====
+   Four stage photos in a row instead of a plain grid, so the preview
+   reads as one sourcing-to-export sequence rather than unrelated tiles. */
+.gallery-story { display: flex; align-items: stretch; gap: 16px; margin-top: 8px; }
+.gallery-story-item {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.gallery-story-item::before { content: ""; display: block; padding-top: 133%; }
+.gallery-story-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.gallery-story-item:hover img { transform: scale(1.05); }
+.gallery-story-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 20px 16px 16px;
+  background: linear-gradient(180deg, transparent, rgba(8,26,46,0.88));
+  color: var(--white);
+}
+.gallery-story-num { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .08em; color: #E7CB7F; margin-bottom: 4px; text-transform: uppercase; }
+.gallery-story-caption strong { display: block; font-size: 1rem; }
+.gallery-story-caption p { margin: 2px 0 0; font-size: .76rem; color: rgba(255,255,255,.78); }
+.gallery-story-arrow { flex-shrink: 0; align-self: center; color: var(--brand-gold); font-size: 1.5rem; opacity: .7; }
+
+@media (max-width: 1080px) {
+  .gallery-story { flex-wrap: wrap; }
+  .gallery-story-item { flex: 1 1 calc(50% - 8px); }
+  .gallery-story-arrow { display: none; }
+}
+@media (max-width: 640px) {
+  .gallery-story { flex-direction: column; }
+  .gallery-story-item { width: 100%; }
+  .gallery-story-item::before { padding-top: 75%; }
+}
+
+/* ===== Gallery stages (full Gallery page) =====
+   Photos grouped into the sourcing -> processing -> quality control ->
+   export sequence, each stage introduced with a heading and laid out as
+   a flowing mosaic (CSS columns) instead of one uniform square grid, so
+   items keep their natural proportions rather than all being cropped
+   the same way. */
+.gallery-stage { margin-bottom: 64px; }
+.gallery-stage:last-child { margin-bottom: 0; }
+.gallery-stage-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 18px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid var(--brand-gold); }
+.gallery-stage-num { font-size: 2.2rem; font-weight: 800; color: var(--gold-2); line-height: 1; flex-shrink: 0; }
+.gallery-stage-text h3 { font-size: 1.4rem; margin: 0 0 .25em; color: var(--deep); }
+.gallery-stage-text p { margin: 0; color: var(--text-muted); font-size: .92rem; max-width: 640px; }
+
+.gallery-mosaic { columns: 3; column-gap: 24px; }
+.gallery-mosaic .gallery-item { display: block; break-inside: avoid; margin-bottom: 24px; }
+.gallery-mosaic .gallery-item::before { content: none; }
+.gallery-mosaic .gallery-item img { position: static; width: 100%; height: auto; }
+
+@media (max-width: 1080px) {
+  .gallery-mosaic { columns: 2; }
+}
+@media (max-width: 640px) {
+  .gallery-mosaic { columns: 1; }
+  .gallery-stage { margin-bottom: 44px; }
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1035,9 +1106,6 @@ h1, h2, h3, h4, .eyebrow, .hero-badge, .lang-switch, .product-category { letter-
 .feature-card:hover { transform: none; box-shadow: none; }
 .feature-icon { width: 100%; height: auto; aspect-ratio: 16 / 10; margin-bottom: 22px; background: var(--cream); border-radius: 4px; overflow: hidden; }
 .feature-icon img { width: 100%; height: 100%; object-fit: contain; }
-.markets { padding-top: 48px; background: var(--cream); }
-.markets h3, .markets-note { padding-inline: 24px; }
-.export-map { border-radius: 0; }
 #about, #tentang { padding-top: 40px; padding-bottom: 0; }
 .process-grid { gap: 24px; }
 .process-step { background: none; border: 0; border-top: 2px solid var(--brand-gold); border-radius: 0; box-shadow: none; backdrop-filter: none; padding: 22px 0; }
@@ -1068,13 +1136,6 @@ h1, h2, h3, h4, .eyebrow, .hero-badge, .lang-switch, .product-category { letter-
 .product-inquiry span { font-size: 1.35rem; color: var(--gold-2); }
 .product-inquiry:hover { text-decoration: underline; }
 .product-card:focus-within { border-color: var(--brand-gold); }
-.product-tools { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-bottom: 28px; }
-.product-tools label { display: grid; gap: 6px; font-size: .8rem; font-weight: 600; }
-.product-tools input, .product-tools select { font: inherit; font-size: .95rem; padding: 12px; height: 46px; border: 1px solid rgba(15,42,74,.25); border-radius: 6px; background: var(--white); color: var(--navy); max-width: 100%; }
-.product-search { flex: 1; min-width: 180px; }
-.product-count { font-size: .8rem; color: var(--text-muted); margin: 0 0 12px auto; }
-.product-card[hidden] { display: none; }
-.product-empty { grid-column: 1 / -1; padding: 32px 0; text-align: center; }
 .faq-section { background: var(--cream); }
 .faq-rows { max-width: 1240px; margin: 0 auto; padding: 0 24px; gap: 0; }
 .faq-scroller { mask-image: none; -webkit-mask-image: none; overflow: visible; }
@@ -1109,6 +1170,7 @@ h1, h2, h3, h4, .eyebrow, .hero-badge, .lang-switch, .product-category { letter-
   .faq-group { gap: 24px; }
 }
 @media (max-width: 640px) {
+  html { scroll-padding-top: 73px; }
   .section { padding: 56px 0; }
   .section-head h2, .about-copy h2, .contact-info h2 { font-size: 1.75rem; }
   .header-inner { height: 72px; gap: 8px; padding-inline: 16px; }
@@ -1137,9 +1199,6 @@ h1, h2, h3, h4, .eyebrow, .hero-badge, .lang-switch, .product-category { letter-
   .feature-card { padding: 22px 0; }
   .feature-icon { width: 100%; height: auto; }
   .sourcing-request { align-items: flex-start; flex-direction: column; gap: 20px; }
-  .product-tools { align-items: stretch; }
-  .product-tools label { width: 100%; }
-  .product-count { margin: 0; }
   .faq-group { grid-template-columns: 1fr; gap: 0; }
   .contact-form { padding: 24px 18px; }
   .page-hero h1 { font-size: 2rem; }

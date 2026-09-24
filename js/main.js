@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Build the catalog controls from the existing translated product content.
+  // Add a WhatsApp quotation-request link to each product card.
   const productGrid = document.querySelector('.product-grid');
   if (productGrid) {
     const english = document.documentElement.lang === 'en';
@@ -62,49 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       inquiry.append(arrow);
       card.querySelector('.product-body').append(inquiry);
     });
-    const tools = document.createElement('div');
-    tools.className = 'product-tools';
-    const searchLabel = document.createElement('label');
-    searchLabel.className = 'product-search';
-    searchLabel.textContent = english ? 'Search products' : 'Cari produk';
-    const search = document.createElement('input');
-    search.type = 'search';
-    search.placeholder = english ? 'Product name or HS code' : 'Nama produk atau kode HS';
-    searchLabel.append(search);
-    const categoryLabel = document.createElement('label');
-    categoryLabel.textContent = english ? 'Category' : 'Kategori';
-    const category = document.createElement('select');
-    category.add(new Option(english ? 'All categories' : 'Semua kategori', ''));
-    const categories = [...new Set(products.map(card => card.querySelector('.product-category').textContent.trim()))];
-    categories.forEach(name => category.add(new Option(name, name)));
-    categoryLabel.append(category);
-    const count = document.createElement('p');
-    count.className = 'product-count';
-    count.setAttribute('role', 'status');
-    tools.append(searchLabel, categoryLabel, count);
-    productGrid.before(tools);
-    const empty = document.createElement('p');
-    empty.className = 'product-empty';
-    empty.textContent = english ? 'Not in this selection? Send us your sourcing requirements above.' : 'Belum ada di pilihan ini? Sampaikan kebutuhan sourcing Anda melalui tombol di atas.';
-    productGrid.append(empty);
-    const filter = () => {
-      const query = search.value.trim().toLocaleLowerCase();
-      let visible = 0;
-      products.forEach(card => {
-        const matches = card.textContent.toLocaleLowerCase().includes(query)
-          && (!category.value || card.querySelector('.product-category').textContent.trim() === category.value);
-        card.hidden = !matches;
-        if (matches) {
-          card.classList.add('visible');
-          visible++;
-        }
-      });
-      count.textContent = english ? `${visible} catalog examples` : `${visible} contoh produk`;
-      empty.hidden = visible > 0;
-    };
-    search.addEventListener('input', filter);
-    category.addEventListener('change', filter);
-    filter();
   }
 
   // Scroll reveal animation
