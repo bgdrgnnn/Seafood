@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = [...productGrid.querySelectorAll('.product-card')];
     products.forEach(card => {
       const name = card.querySelector('h3').textContent.trim();
+      if (card.querySelector('.product-inquiry')) return;
       const inquiry = document.createElement('a');
       inquiry.className = 'product-inquiry';
       inquiry.target = '_blank';
@@ -64,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scroll reveal animation
+  // Content stays readable when JavaScript is unavailable. Only hide sections
+  // once the observer that will reveal them is ready.
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -75,7 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, { threshold: 0.15 });
-    revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(el => {
+      el.classList.add('reveal-ready');
+      observer.observe(el);
+    });
   } else {
     revealEls.forEach(el => el.classList.add('visible'));
   }
@@ -91,19 +96,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Contact form (front-end only — no backend wired up)
+  // Prepare an inquiry for WhatsApp. The visitor reviews and sends it there;
+  // preparing a link must never be presented as a received message.
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   if (contactForm && formStatus) {
     const isEnglish = document.documentElement.lang === 'en';
-    const successMessage = isEnglish
-      ? 'Thank you! Your message has been received. Our team will get back to you shortly.'
-      : 'Terima kasih! Pesan Anda telah diterima. Tim kami akan segera menghubungi Anda.';
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const labels = isEnglish
+      ? { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', product: 'Product', quantity: 'Quantity', destination: 'Destination', message: 'Requirements' }
+      : { name: 'Nama', company: 'Perusahaan', email: 'Email', phone: 'Telepon', product: 'Produk', quantity: 'Jumlah', destination: 'Tujuan', message: 'Kebutuhan' };
+    const clearPreparedMessage = () => { formStatus.replaceChildren(); };
+    contactForm.addEventListener('input', clearPreparedMessage);
+    contactForm.addEventListener('change', clearPreparedMessage);
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      formStatus.textContent = successMessage;
-      contactForm.reset();
+      if (!contactForm.reportValidity()) return;
+      const lines = [isEnglish
+        ? 'Hello Bahari Seafood, I would like a quotation.'
+        : 'Halo Bahari Seafood, saya ingin meminta penawaran.'];
+      Object.entries(labels).forEach(([key, label]) => {
+        const field = contactForm.elements.namedItem(key);
+        const value = field.value.trim();
+        if (!value) return;
+        const readableValue = key === 'product' ? field.selectedOptions[0].textContent.trim() : value;
+        lines.push(`${label}: ${readableValue}`);
+      });
+      const link = document.createElement('a');
+      link.className = 'btn btn-primary whatsapp-handoff';
+      link.href = `https://wa.me/6282333842942?text=${encodeURIComponent(lines.join('\n'))}`;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = isEnglish ? 'Open WhatsApp to send' : 'Buka WhatsApp untuk mengirim';
+      formStatus.textContent = isEnglish
+        ? 'Your message is ready, but has not been sent. Open WhatsApp, review it, then tap Send. '
+        : 'Pesan siap, tetapi belum terkirim. Buka WhatsApp, periksa pesan, lalu tekan Kirim. ';
+      formStatus.append(link);
+      link.focus();
     });
+    submitButton.disabled = false;
   }
 
   // Footer year
