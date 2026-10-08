@@ -1,0 +1,8 @@
+# Apache / LiteSpeed: consolidate explicitly requested homepage aliases.
+# THE_REQUEST avoids redirecting internal DirectoryIndex resolution.
+DirectoryIndex index.html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \s/+((?:id/)?)index\.html(?:[?\s]) [NC]
+RewriteRule ^(?:id/)?index\.html$ /%1 [R=301,L]
+</IfModule>
